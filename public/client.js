@@ -20,6 +20,10 @@ $(document).ready(function () {
         objectBuilder('Divide');
         postCalcExpression();
     });
+
+    $('#clearButton').on('click', function () {
+        clearInput();
+    });
 });
 
 function objectBuilder(operator) {
@@ -37,14 +41,13 @@ function postCalcExpression() {
         data: calcExpression,
         success: function (response) {
             console.log(response);
-
         }
     });
 };
 
 //add something like these to Post eventually:  getMessages(); clearInput();
 
-//function clearInput() {
-//     $('#firstNumber').val('');
-//     $('#secondNumber').val('');
-// }
+function clearInput() {
+    $('#firstNumber').val('');
+    $('#secondNumber').val('');
+}
