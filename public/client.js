@@ -40,14 +40,28 @@ function postCalcExpression() {
         url: '/calc',
         data: calcExpression,
         success: function (response) {
-            console.log(response);
+            getResult();
         }
     });
 };
 
-//add something like these to Post eventually:  getMessages(); clearInput();
+function getResult() {
+    $.ajax({
+        method: 'GET',
+        url: '/calc',
+        success: function (response) {
+            console.log(response);
+            resultToDom(response);
+        }
+    })
+}
+
+function resultToDom(response) {
+    $('#result').text(response.value);
+};
 
 function clearInput() {
     $('#firstNumber').val('');
     $('#secondNumber').val('');
+    $('#result').text('');
 }
