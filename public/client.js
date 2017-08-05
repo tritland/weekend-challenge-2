@@ -1,29 +1,50 @@
+var calcExpression = {};
+
 $(document).ready(function () {
     $('#addButton').on('click', function () {
-        console.log(objectBuilder('Add'));
+        objectBuilder('Add');
+        postCalcExpression();
     });
 
     $('#subtractButton').on('click', function () {
-        console.log(objectBuilder('Subtract'));
+        objectBuilder('Subtract');
+        postCalcExpression();
     });
 
     $('#multiplyButton').on('click', function () {
-        console.log(objectBuilder('Multiply'));
+        objectBuilder('Multiply');
+        postCalcExpression();
     });
 
     $('#divideButton').on('click', function () {
-        console.log(objectBuilder('Divide'));
+        objectBuilder('Divide');
+        postCalcExpression();
     });
 });
 
 function objectBuilder(operator) {
-    var calcExpression = {
+    calcExpression = {
         x: parseInt($('#firstNumber').val()),
         y: parseInt($('#secondNumber').val()),
         type: operator
-    }
-    return calcExpression;
-    //will eventually send calcExpression to AJAX POST 
-}
+    };
+};
 
-//AJAX POST goes here
+function postCalcExpression() {
+    $.ajax({
+        method: 'POST',
+        url: '/calc',
+        data: calcExpression,
+        success: function (response) {
+            console.log(response);
+
+        }
+    });
+};
+
+//add something like these to Post eventually:  getMessages(); clearInput();
+
+//function clearInput() {
+//     $('#firstNumber').val('');
+//     $('#secondNumber').val('');
+// }

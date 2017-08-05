@@ -12,17 +12,17 @@ app.use(express.static('public'));
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.post('/message', function (req, res) {
-	//console.log('message post was hit!');
-//	messages.push(req.body);
+app.post('/calc', function (req, res) {
+	console.log('calc post was hit!');
+	console.log(req.body);
 	//console.log(messages);
-//	res.sendStatus(201);    
+	res.sendStatus(201);    
 });
 
-app.get('/message', function(req, res) {
+//app.get('/message', function(req, res) {
 //	console.log(messages)
 //	res.send(messages);
-});
+//});
 
 app.listen(port, function() {
 	console.log('listening on port', port);
