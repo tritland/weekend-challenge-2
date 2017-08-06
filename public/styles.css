@@ -1,0 +1,151 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	
+	/* Better text styling */
+	font: bold 14px Arial, sans-serif;
+}
+
+html {
+	background-image: url(https://ak9.picdn.net/shutterstock/videos/3808376/thumb/4.jpg?i10c=img);
+    
+}
+
+h1 {
+  color: white;
+  font-size: 50px;
+  text-align: center;  
+}
+
+
+/* Using box shadows to create 3D effects */
+#calculator {
+	width: 325px;
+	height: auto;
+	
+	margin: 100px auto;
+	padding: 20px 20px 9px;
+	
+	background: #eaeeef;
+	border-radius: 3px;
+	box-shadow: 0px 4px #880ddb, 0px 10px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Top portion */
+.topRow button#clearButton {
+	float: left;
+}
+
+/* Inset shadow on the screen to create indent */
+.topRow #screen {
+	height: 40px;
+	width: 212px;
+	float: right;
+	padding: 0 10px;
+	background: rgba(0, 0, 0, 0.2);
+	border-radius: 3px;
+	box-shadow: inset 0px 4px rgba(0, 0, 0, 0.2);
+	
+
+	font-size: 17px;
+	line-height: 40px;
+	color: white;
+	text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+	text-align: right;
+	letter-spacing: 1px;
+}
+
+/* Clear floats */
+.keys, .topRow {
+    overflow: hidden;
+}
+
+/* Applying same to the keys */
+.keys button, .topRow button#clearButton {
+	float: left;
+	position: relative;
+	top: 0;
+	
+	cursor: pointer;
+	
+	width: 66px;
+	height: 36px;
+	
+	background: white;
+	border-radius: 3px;
+
+	
+	margin: 0 7px 11px 0;
+	
+	color: #880ddb;
+	line-height: 36px;
+	text-align: center;
+	
+	/* prevent selection of text inside keys */
+	user-select: none;
+	
+	/* Smoothing out hover and active states using css3 transitions */
+	transition: all 0.2s ease;
+}
+
+/* Remove right margins from operator keys */
+/* style different type of keys (operators/evaluate/clear) differently */
+.keys button.operator {
+	background: #9bb8f2;
+	margin-right: 0;
+}
+
+.keys button#equalButton {
+	background: #c3f7c0;
+
+	color: #888e5f;
+}
+
+.topRow button#clearButton {
+	background: #ff9fa8;
+	
+	color: white;
+}
+
+/* Some hover effects */
+.keys button:hover {
+	background: #9c89f6;
+	
+	color: white;
+}
+
+.keys button.operator:hover {
+    background: #2421bc;
+
+    color: #ffffff;
+}
+
+
+.keys button#equalButton:hover {
+	background: #238c40;
+	
+	color: #ffffff;
+}
+
+.topRow button#clearButton:hover {
+	background: #f68991;
+	
+	color: white;
+}
+
+/* Simulating "pressed" effect on active state of the keys by removing the box-shadow and moving the keys down a bit */
+.keys button:active {
+	
+	top: 4px;
+}
+
+.keys button#equalButton:active {
+	
+	top: 4px;
+}
+
+.topRow button#clearButton:active {
+	top: 4px;
+
+}

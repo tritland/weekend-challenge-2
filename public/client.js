@@ -1,41 +1,68 @@
-//empty object to populate with data to send to server
-var calcExpression = {};
+//empty variable to hold x and y values
+var number = '';
 
-//click functions for math operator buttons that include a function to 
-//build objects and a function to post those objects to server
+//empty object to populate with data to send to server
+var calcExpression = {
+    x: '',
+    y: '',
+    type: ''
+};
+
 $(document).ready(function () {
+
+//below are click events that display button values on screen and call functions
+
+    $('.numberButton').on('click', function () {
+        $('#screen').append($(this).val() + ' '); //couldn't get this to work as a function for some reason
+        var clickedButton = this.value;
+        number += clickedButton; //concatenates number entries
+        console.log(number);
+    });
+
     $('#addButton').on('click', function () {
+        $('#screen').append($(this).val() + ' ');
         objectBuilder('Add');
-        postCalcExpression();
     });
 
     $('#subtractButton').on('click', function () {
+        $('#screen').append($(this).val() + ' ');
         objectBuilder('Subtract');
-        postCalcExpression();
     });
 
     $('#multiplyButton').on('click', function () {
+        $('#screen').append($(this).val() + ' ');
         objectBuilder('Multiply');
-        postCalcExpression();
     });
 
     $('#divideButton').on('click', function () {
+        $('#screen').append($(this).val() + ' ');
         objectBuilder('Divide');
+    });
+    
+    $('#equalButton').on('click', function () {
+        secondNumber();
         postCalcExpression();
     });
-
+ 
     $('#clearButton').on('click', function () {
         clearInput();
     });
 });
 
-//puts numbers entered and operator clicked into an object
+//adds x value and operator type value to calcExpression object
+//clears number variable to allow y value to be entered
 function objectBuilder(operator) {
-    calcExpression = {
-        x: parseInt($('#firstNumber').val()),
-        y: parseInt($('#secondNumber').val()),
-        type: operator
-    };
+    calcExpression.x = number;
+    calcExpression.type = operator;
+    number = '';
+    console.log(calcExpression);
+};
+
+//adds y value to calcExpression object
+function secondNumber() {
+    calcExpression.y = number;
+    console.log(number);
+    console.log(calcExpression);
 };
 
 //posts object to server and calls the GET function to retrieve the 
@@ -60,17 +87,21 @@ function getResult() {
             console.log(response);
             resultToDom(response);
         }
-    })
-}
-
-//displays result on DOM
-function resultToDom(response) {
-    $('#result').text(response.value);
+    });
 };
 
-//clears result and input fields when Clear is clicked
+//displays result on DOM in display screen
+function resultToDom(response) {
+    $('#screen').text(response.value);
+};
+
+//clears display, and resets calcExpression object and number variable
 function clearInput() {
-    $('#firstNumber').val('');
-    $('#secondNumber').val('');
-    $('#result').text('');
-}
+    $('#screen').text('');
+    number = '';
+    calcExpression = {
+        x: '',
+        y: '',
+        type: ''
+    };
+};

@@ -11,17 +11,40 @@
 <body id="calcBody">
     <h1>Weekend Challenge #2 - Calculator App</h1>
 
-    <input type="number" id="firstNumber">
-    <input type="number" id="secondNumber">
+    <div id="calculator">
+        <div class="topRow">
+            <button id="clearButton">Clear</button>
+            <div id="screen"></div>
+        </div>
 
-    <button id="addButton">+</button>
-    <button id="subtractButton">-</button>
-    <button id="multiplyButton">x</button>
-    <button id="divideButton">/</button>
-    <button id="clearButton">Clear</button>
+        <!-- <input type="number" id="firstNumber">
+        <input type="number" id="secondNumber"> 
+        <button id="addButton">+</button>
+        <button id="subtractButton">-</button>
+        <button id="multiplyButton">x</button>
+        <button id="divideButton">/</button>
+       <button id="clearButton">Clear</button> 
+    <h3 id="result"></h3> -->
 
-    <h3 id="result"></h3>
-
+        <div class="keys">
+            <button class="numberButton" id="seven" value="7">7</button>
+            <button class="numberButton" id="eight" value="8">8</button>
+            <button class="numberButton" id="nine" value="9">9</button>
+            <button class="operator" id="addButton" value="+">+</button>
+            <button class="numberButton" id="four" value="4">4</button>
+            <button class="numberButton" id="five" value="5">5</button>
+            <button class="numberButton" id="six" value="6">6</button>
+            <button class="operator" id="subtractButton" value="-">-</button>
+            <button class="numberButton" id="one" value="1">1</button>
+            <button class="numberButton" id="two" value="2">2</button>
+            <button class="numberButton" id="three" value="3">3</button>
+            <button class="operator" id="divideButton" value="÷">÷</button>
+            <button class="numberButton" id="zero" value="0">0</button>
+            <button class="numberButton" id="decimal" value=".">.</button>
+            <button id="equalButton">=</button>
+            <button class="operator" id="multiplyButton" value="x">x</button>
+        </div>
+    </div>
 </body>
 
 </html>
