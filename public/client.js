@@ -1,5 +1,8 @@
+//empty object to populate with data to send to server
 var calcExpression = {};
 
+//click functions for math operator buttons that include a function to 
+//build objects and a function to post those objects to server
 $(document).ready(function () {
     $('#addButton').on('click', function () {
         objectBuilder('Add');
@@ -26,6 +29,7 @@ $(document).ready(function () {
     });
 });
 
+//puts numbers entered and operator clicked into an object
 function objectBuilder(operator) {
     calcExpression = {
         x: parseInt($('#firstNumber').val()),
@@ -34,6 +38,8 @@ function objectBuilder(operator) {
     };
 };
 
+//posts object to server and calls the GET function to retrieve the 
+//result back from the server
 function postCalcExpression() {
     $.ajax({
         method: 'POST',
@@ -45,6 +51,7 @@ function postCalcExpression() {
     });
 };
 
+//GETs response from server and calls function to display result on DOM
 function getResult() {
     $.ajax({
         method: 'GET',
@@ -56,10 +63,12 @@ function getResult() {
     })
 }
 
+//displays result on DOM
 function resultToDom(response) {
     $('#result').text(response.value);
 };
 
+//clears result and input fields when Clear is clicked
 function clearInput() {
     $('#firstNumber').val('');
     $('#secondNumber').val('');
