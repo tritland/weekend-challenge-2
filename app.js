@@ -17,13 +17,13 @@ app.post('/calc', function (req, res) {
     console.log(req.body);
 
     if (req.body.type === 'Add') {
-        result.value = parseInt(req.body.x) + parseInt(req.body.y)
+        result.value = parseFloat(req.body.x) + parseFloat(req.body.y)
     } else if (req.body.type === 'Subtract') {
-        result.value = parseInt(req.body.x) - parseInt(req.body.y)
+        result.value = parseFloat(req.body.x) - parseFloat(req.body.y)
     } else if (req.body.type === 'Multiply') {
-        result.value = parseInt(req.body.x) * parseInt(req.body.y)
+        result.value = parseFloat(req.body.x) * parseFloat(req.body.y)
     } else {
-        result.value = parseInt(req.body.x) / parseInt(req.body.y)
+        result.value = parseFloat(req.body.x) / parseFloat(req.body.y)
     }
     res.sendStatus(201);
 });
